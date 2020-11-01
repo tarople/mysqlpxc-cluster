@@ -1,0 +1,26 @@
+version: '3'
+services: 
+  pxc-1:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: pxc-node-1
+    volumes:       
+      - ./data:/var/lib/mysql      
+    ports:
+      - "33306:3306"
+    networks:
+      pxc-net:
+        ipv4_address: 172.18.0.2
+    environment:
+      MYSQL_ROOT_PASSWORD: root        
+      CLUSTER_NAME: pxc
+    ulimits: 
+        nproc: 65535     
+    restart: always  
+networks:
+  pxc-net:
+    external: false
+    ipam:
+      config:
+      - subnet: 172.18.0.0/24

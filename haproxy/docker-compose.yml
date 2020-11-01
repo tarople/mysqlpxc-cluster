@@ -1,0 +1,17 @@
+version: '3'
+services:
+  haproxy-pxc:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile 
+    container_name: haproxy-pxc
+    volumes:
+      - ./config:/usr/local/etc/haproxy:ro                 
+    ports:
+      - "24001:4001"
+      - "24002:4002"
+    ulimits:
+      nproc: 65535
+    hostname: haproxy
+#    mem_limit: 1024m
+    restart: always
