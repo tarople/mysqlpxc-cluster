@@ -16,7 +16,7 @@ git clone https://github.com/tarople/mysqlpxc-cluster.git
 ### 说明
 
 #### 1、mysql
-
+  > 注意添加用户 adduser mysql
   > 如需要做多个pxc结点，可复制pxc1,并修改docker-compose.yml的相关配置
 
 ### 启动容器
